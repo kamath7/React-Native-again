@@ -1,16 +1,22 @@
 import React from "react";
 import { Text, StyleSheet, View, Button, TouchableOpacity } from "react-native";
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
   return (
     <View>
       <Text style={styles.text}>HomeScreen</Text>
-      <Button onPress={()=> console.log('Button Pressed')} 
+      <Button
+        style={styles.button}
+        onPress={() => navigation.navigate("Components")}
         title="Components Screen"
       />
-      <TouchableOpacity onPress={()=> console.log('List TO Pressed')}>
+      {/*  <TouchableOpacity onPress={()=> props.navigation.navigate('List')}>
         <Text>Lists Screen</Text>
-      </TouchableOpacity>
+  </TouchableOpacity>*/}
+      <Button
+        onPress={() => navigation.navigate("List")}
+        title="List Screen"
+      />
     </View>
   );
 };
@@ -20,6 +26,9 @@ const styles = StyleSheet.create({
     fontSize: 30,
     color: "#fafafa",
     textAlign: "center",
+  },
+  button: {
+    margin: 120
   },
 });
 
