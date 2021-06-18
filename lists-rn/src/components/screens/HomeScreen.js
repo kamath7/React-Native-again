@@ -5,18 +5,25 @@ const HomeScreen = ({ navigation }) => {
   return (
     <View style={{ marginTop: 130 }}>
       <Text style={styles.text}>HomeScreen</Text>
-      <Button
-        onPress={() => navigation.navigate("Components")}
-        title="Components Screen"
-      />
-      {/*  <TouchableOpacity onPress={()=> props.navigation.navigate('List')}>
-        <Text>Lists Screen</Text>
-  </TouchableOpacity>*/}
-      <Button onPress={() => navigation.navigate("List")} title="List Screen" />
-      <Button
-        onPress={() => navigation.navigate("Images")}
-        title="Images Screen"
-      />
+      <View style={{marginVertical: 18}}>
+        <Button
+          onPress={() => navigation.navigate("Components")}
+          title="Components Screen"
+        />
+      </View>
+
+      <View style={{marginVertical: 18}}>
+        <Button
+          onPress={() => navigation.navigate("List")}
+          title="List Screen"
+        />
+      </View>
+      <View style={{marginVertical: 18}}>
+        <Button
+          onPress={() => navigation.navigate("Images")}
+          title="Images Screen"
+        />
+      </View>
     </View>
   );
 };
@@ -30,3 +37,6 @@ const styles = StyleSheet.create({
 });
 
 export default HomeScreen;
+//    {/*  <TouchableOpacity onPress={()=> props.navigation.navigate('List')}>
+//       <Text>Lists Screen</Text>
+// </TouchableOpacity>*/}
