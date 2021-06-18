@@ -7,13 +7,15 @@ import HomeScreen from "./src/components/screens/HomeScreen";
 import ComponentScreen from './src/components/screens/ComponentScreen'
 import CustomScreen from "./src/components/screens/CustomScreen";
 import ListScreen from './src/components/screens/ListScreen';
+import ImageScreen from './src/components/screens/ImageScreen';
 
 const navigator = createStackNavigator(
   {
     Home: HomeScreen,
     Components: ComponentScreen,
     Custom: CustomScreen,
-    List: ListScreen
+    List: ListScreen,
+    Images: ImageScreen
 
   },
   {
