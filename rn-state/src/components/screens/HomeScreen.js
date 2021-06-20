@@ -3,7 +3,7 @@ import { Text, StyleSheet, View, Button, TouchableOpacity } from "react-native";
 
 const HomeScreen = ({ navigation }) => {
   return (
-    <View style={{ marginTop: 130 }}>
+    <View>
       <Text style={styles.text}>HomeScreen</Text>
       <View style={{marginVertical: 18}}>
         <Button
@@ -30,6 +30,12 @@ const HomeScreen = ({ navigation }) => {
         title="Counter Screen"
       />
     </View>
+    <View style={{marginVertical: 18}}>
+    <Button
+      onPress={() => navigation.navigate("Colors")}
+      title="Colors Screen"
+    />
+  </View>
     </View>
   );
 };
