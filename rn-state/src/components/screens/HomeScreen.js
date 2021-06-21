@@ -36,6 +36,12 @@ const HomeScreen = ({ navigation }) => {
       title="Colors Screen"
     />
   </View>
+  <View style={{marginVertical: 18}}>
+  <Button
+    onPress={() => navigation.navigate("Simple")}
+    title="Simple Screen"
+  />
+</View>
     </View>
   );
 };
