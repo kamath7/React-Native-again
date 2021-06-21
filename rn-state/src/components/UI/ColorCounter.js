@@ -1,16 +1,16 @@
-import React from 'react'
-import { StyleSheet, Text, View , Button} from 'react-native'
+import React from "react";
+import { StyleSheet, Text, View, Button } from "react-native";
 
-const ColorCounter = () => {
-    return (
-        <View>
-            <Text>Red</Text>
-            <Button title="Increase Red"/>
-            <Button title="Decrease Red"/>
-        </View>
-    )
-}
+const ColorCounter = ({ color, onIncrease, onDecrease }) => {
+  return (
+    <View>
+      <Text style={{ textAlign: "center", fontWeight: "bold" }}>{color}</Text>
+      <Button onPress={()=> onIncrease()} title={`Increase ${color}`} />
+      <Button onPress={()=> onDecrease()} title={`Decrease ${color}`} />
+    </View>
+  );
+};
 
-export default ColorCounter
+export default ColorCounter;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});
