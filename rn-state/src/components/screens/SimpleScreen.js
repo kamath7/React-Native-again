@@ -3,17 +3,28 @@ import { StyleSheet, Text, View, Alert } from "react-native";
 import ColorCounter from "../UI/ColorCounter";
 
 const COLOR_INCREMENT_VAL = 15;
-const reducer = (state, action)=>{
-    switch(action.colorToChange){
-      case 'red': return {...state, red: state.red + action.amount}
-          break;
-      case 'green': return {...state, green: state.green + action.amount}
-          break;
-      case 'blue': return {...state, blue: state.blue + action.amount}
-          break;
-      default: return state;
-    }
-}
+const reducer = (state, action) => {
+  switch (action.colorToChange) {
+    case "red":
+      return state.red + action.amount > 255 || state.red + action.amount < 0
+        ? state
+        : { ...state, red: state.red + action.amount };
+      break;
+    case "green":
+      return state.green + action.amount > 255 ||
+        state.green + action.amount < 0
+        ? state
+        : { ...state, green: state.green + action.amount };
+      break;
+    case "blue":
+      return state.blue + action.amount > 255 || state.blue + action.amount < 0
+        ? state
+        : { ...state, blue: state.blue + action.amount };
+      break;
+    default:
+      return state;
+  }
+};
 const SimpleScreen = () => {
   // const [red, setRed] = useState(0);
   // const [green, setGreen] = useState(0);
@@ -38,26 +49,37 @@ const SimpleScreen = () => {
   //   }
   // };
 
-
-
-  const [state, dispatch] = useReducer(reducer, {red:0, green: 0 , blue: 0}); //initial state also passed
+  const [state, dispatch] = useReducer(reducer, { red: 0, green: 0, blue: 0 }); //initial state also passed
   console.log(state);
+  const { red, green, blue } = state;
   return (
     <View>
       <ColorCounter
-        onIncrease={}
-        onDecrease={}
+        onIncrease={() =>
+          dispatch({ colorToChange: "red", amount: COLOR_INCREMENT_VAL })
+        }
+        onDecrease={() =>
+          dispatch({ colorToChange: "red", amount: -1 * COLOR_INCREMENT_VAL })
+        }
         color={"Red"}
       />
       <ColorCounter
         color={"Green"}
-        onIncrease={}
-        onDecrease={}
+        onIncrease={() =>
+          dispatch({ colorToChange: "green", amount: COLOR_INCREMENT_VAL })
+        }
+        onDecrease={() =>
+          dispatch({ colorToChange: "green", amount: COLOR_INCREMENT_VAL })
+        }
       />
       <ColorCounter
         color={"Blue"}
-        onIncrease={}
-        onDecrease={}
+        onIncrease={() =>
+          dispatch({ colorToChange: "blue", amount: COLOR_INCREMENT_VAL })
+        }
+        onDecrease={() =>
+          dispatch({ colorToChange: "blue", amount: COLOR_INCREMENT_VAL })
+        }
       />
       <View
         style={{
@@ -65,7 +87,7 @@ const SimpleScreen = () => {
           width: 200,
           backgroundColor: `rgb(${red},${green},${blue})`,
           alignSelf: "center",
-          marginVertical: 15
+          marginVertical: 15,
         }}
       />
       <Text
