@@ -1,14 +1,32 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import React, { useState } from "react";
+import { StyleSheet, Text, View, TextInput } from "react-native";
 
 const TextScreen = () => {
-    return (
-        <View>
-            <Text>Text Screen</Text>
-        </View>
-    )
-}
+  const [randomText, setRandomText] = useState("");
+  return (
+    <View>
+      <TextInput
+        style={styles.input}
+        placeholder={"Enter some text"}
+        autoCapitalize="none"
+        autoCorrect={false}
+        value={randomText}
+        onChangeText={(newText) => setRandomText(newText)}
+      />
+      <Text style={{ marginVertical: 40, textAlign: "center" }}>
+        Your Text is {randomText}
+      </Text>
+    </View>
+  );
+};
 
-export default TextScreen
+export default TextScreen;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  input: {
+    margin: 15,
+    borderColor: "black",
+    borderWidth: 1,
+    borderRadius: 10,
+  },
+});
