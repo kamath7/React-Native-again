@@ -1,21 +1,25 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, TextInput } from "react-native";
+import { StyleSheet, Text, View, TextInput, Alert } from "react-native";
 
 const TextScreen = () => {
-  const [randomText, setRandomText] = useState("");
+  const [password, setPassword] = useState("");
   return (
     <View>
+      <Text style={{ marginVertical: 40 }}>Enter Password</Text>
+
       <TextInput
         style={styles.input}
-        placeholder={"Enter some text"}
+        placeholder={"Enter Password"}
         autoCapitalize="none"
         autoCorrect={false}
-        value={randomText}
-        onChangeText={(newText) => setRandomText(newText)}
+        value={password}
+        onChangeText={(newText) => setPassword(newText)}
       />
-      <Text style={{ marginVertical: 40, textAlign: "center" }}>
-        Your Text is {randomText}
-      </Text>
+      {password.length > 5 ? (
+        <Text> Your password is {password}</Text>
+      ) : (
+        <Text style={{ color: "red" }}>Password criteria not met </Text>
+      )}
     </View>
   );
 };
